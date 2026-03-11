@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Carta para Minha Família</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:black;
+color:white;
+overflow-x:hidden;
+text-align:center;
+}
+
+/* GALÁXIA */
+
+.galaxy{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#1b2735,#090a0f);
+z-index:-2;
+}
+
+/* ESTRELAS */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:move linear infinite;
+}
+
+@keyframes move{
+from{transform:translateY(-10vh);}
+to{transform:translateY(110vh);}
+}
+
+/* ESTRELA CADENTE */
+
+.shooting{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+box-shadow:0 0 10px white;
+animation:shoot 9s linear infinite;
+}
+
+@keyframes shoot{
+0%{transform:translate(-10vw,-10vh);opacity:0;}
+10%{opacity:1;}
+100%{transform:translate(110vw,110vh);opacity:0;}
+}
+
+/* URSO */
+
+.bear{
+position:fixed;
+bottom:10px;
+left:-100px;
+font-size:50px;
+animation:walk 18s linear infinite;
+}
+
+@keyframes walk{
+0%{left:-100px;}
+100%{left:110vw;}
+}
+
+/* CAIXA */
+
+.box{
+max-width:700px;
+margin:80px auto;
+background:rgba(0,0,0,0.75);
+padding:40px;
+border-radius:12px;
+line-height:1.7;
+}
+
+/* LOGIN */
+
+.login{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:rgba(0,0,0,0.8);
+padding:40px;
+border-radius:12px;
+}
+
+input{
+padding:10px;
+border-radius:8px;
+border:none;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:8px;
+margin-top:10px;
+cursor:pointer;
+}
+
+h2{
+margin-top:0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="galaxy"></div>
+<div class="shooting"></div>
+<div class="bear">🧸</div>
+
+<!-- LOGIN -->
+
+<div class="login" id="login">
+
+<h2>🔒 Mensagem privada</h2>
+
+<p>Digite a senha para ler a carta</p>
+
+<input type="password" id="senha">
+
+<br><br>
+
+<button onclick="entrar()">Entrar</button>
+
+</div>
+
+<!-- CARTA -->
+
+<div class="box" id="carta" style="display:none;">
+
+<h2>Carta para Minha Família</h2>
+
+<h3>Passado</h3>
+
+<p>
+Nossa história nunca foi simples. Tivemos momentos felizes, 
+momentos de união e lembranças que fazem parte da nossa vida.
+Mas também tivemos dificuldades, diferenças e situações que
+nos marcaram profundamente. Essas experiências, boas e ruins,
+fazem parte do caminho que percorremos juntos.
+</p>
+
+<h3>Presente</h3>
+
+<p>
+Hoje eu olho para trás com mais maturidade e consciência.
+Entendo que cada pessoa tem suas próprias lutas,
+suas próprias decisões e sua própria forma de ver o mundo.
+Mesmo com diferenças e desafios, continuo reconhecendo
+que a família é uma parte importante da nossa história.
+</p>
+
+<h3>Reflexão</h3>
+
+<p>
+Nenhuma família é perfeita. Em todas existem erros,
+aprendizados, momentos difíceis e momentos de alegria.
+O que realmente importa é aquilo que conseguimos aprender
+com tudo que vivemos.
+</p>
+
+<h3>Futuro</h3>
+
+<p>
+O que eu espero é que, daqui para frente,
+possamos seguir com mais compreensão, respeito
+e maturidade. A vida é curta demais para ficarmos
+presos apenas aos momentos negativos.
+</p>
+
+<p>
+Independentemente de tudo, vocês fazem parte
+da minha história, do meu passado, do meu presente
+e também do caminho que ainda tenho pela frente.
+</p>
+
+<p><strong>Com respeito e sinceridade.</strong></p>
+
+</div>
+
+<script>
+
+/* ESTRELAS */
+
+for(let i=0;i<160;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.animationDuration=(5+Math.random()*10)+"s";
+
+document.body.appendChild(s);
+
+}
+
+/* SENHA */
+
+function entrar(){
+
+let senha=document.getElementById("senha").value;
+
+if(senha==="familia"){
+
+document.getElementById("login").style.display="none";
+document.getElementById("carta").style.display="block";
+
+}else{
+
+alert("Senha incorreta");
+
+}
+
+}
+
+</script>
+
+</body>
+  </html>
